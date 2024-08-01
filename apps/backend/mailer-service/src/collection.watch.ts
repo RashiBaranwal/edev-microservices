@@ -12,8 +12,8 @@ const db  = client.db('test')
 const collection:Collection = db.collection('subscriptions')
 
 
-const chaneStream:ChangeStream = collection.watch();
-chaneStream.on('change',async (next:ChangeStreamDocument) => {
+const chaneStream:ChangeStream = collection.watch(); //DB continuouly monitors the collection
+chaneStream.on('change',async (next:ChangeStreamDocument) => { //When a change is detected in the collection this function is called
     if(next.operationType === 'insert'){
         const email:string = next.fullDocument.email;
         await sendEmail(email)

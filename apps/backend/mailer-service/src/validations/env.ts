@@ -10,4 +10,5 @@ export const env = z
     MONGO_URL: z.string(),
     EMAIL: z.string(),
     POSTMARK_SECRET: z.string(),
+    PASSWORD: z.string(),
 }).parse(process.env);
