@@ -1,12 +1,14 @@
-import dotenv from 'dotenv';
-import { z } from 'zod';
+import dotenv from "dotenv";
+import { z } from "zod";
 
 dotenv.config({
-  path: './.env',
+  path: "./.env",
 });
 
-export const env = z.object({
+export const env = z
+  .object({
     PORT: z.string(),
     MONGODB_URL: z.string(),
     TOKEN_SECRET: z.string(),
-}).parse(process.env);
+  })
+  .parse(process.env);
