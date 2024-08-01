@@ -8,6 +8,11 @@ export const createSubscriptionHandler = async (c: Context) => {
     if (!email) {
       return c.json({ error: "Email is required" }, 400);
     }
+    
+    const existingSubscription = await Subscription.findOne({email});
+    if(existingSubscription){
+      return c.json({ error: "Email is already subscribed !" }, 400);
+    }
 
     const newSubscription = new Subscription({ email });
     await newSubscription.save();
