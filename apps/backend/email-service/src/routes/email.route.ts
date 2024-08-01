@@ -17,7 +17,7 @@ router.use("*",registerMetrics);
 
 router.get('/metrics',printMetrics);
 
-router.post('/email', authMiddleware,errorMiddleware, createSubscriptionHandler);
+router.post('/email', authMiddleware,rateLimiter(rateLimiterOptions),errorMiddleware, createSubscriptionHandler);
 
 router.get('/hello',authMiddleware,rateLimiter(rateLimiterOptions),errorMiddleware,helloHandler);
 
